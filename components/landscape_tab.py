@@ -98,27 +98,18 @@ def _top_titles(df: pd.DataFrame) -> None:
     )
 
 
-def _composition_charts(df: pd.DataFrame, level_order: list[str]) -> None:
-    """Render the three composition charts as horizontal bars, side by side."""
-    st.subheader("Composition")
-    left, middle, right = st.columns(3)
+def _composition_charts(df: pd.DataFrame) -> None:
+    """Render the composition charts as horizontal bars, side by side.
 
-    level_counts = df["experience_level"].value_counts()
-    ordered_levels = [lv for lv in level_order if lv in level_counts.index]
-    level_counts = level_counts.reindex(ordered_levels).sort_values(ascending=False)
-    with left:
-        st.plotly_chart(
-            horizontal_bar(
-                level_counts.index.tolist(),
-                level_counts.values.tolist(),
-                "Experience level mix",
-                height=COMPOSITION_CHART_HEIGHT,
-            ),
-            width="stretch",
-        )
+    Experience level mix is intentionally excluded here — it duplicates the
+    Salary by experience level table above, which already breaks out postings
+    per level.
+    """
+    st.subheader("Composition")
+    left, right = st.columns(2)
 
     size_counts = df["company_size"].value_counts().sort_values(ascending=False)
-    with middle:
+    with left:
         st.plotly_chart(
             horizontal_bar(
                 size_counts.index.tolist(),
@@ -141,7 +132,7 @@ def _composition_charts(df: pd.DataFrame, level_order: list[str]) -> None:
             width="stretch",
         )
 
-    st.caption(f"All three charts are counts across the same {len(df):,} filtered postings.")
+    st.caption(f"Both charts are counts across the same {len(df):,} filtered postings.")
 
 
 def _geography(df: pd.DataFrame) -> None:
@@ -185,7 +176,7 @@ def _render(df: pd.DataFrame, category: str, rows_2026: int, level_order: list[s
     st.divider()
     _top_titles(df)
     st.divider()
-    _composition_charts(df, level_order)
+    _composition_charts(df)
     st.divider()
     _geography(df)
 

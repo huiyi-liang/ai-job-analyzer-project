@@ -16,7 +16,7 @@ that a language model never touches.
 
 | Tab | What it does |
 |---|---|
-| **1. Landscape Overview** | Five headline metrics, salary by experience level with typical ranges, top-10 job titles (median *and* average salary), three side-by-side composition charts, and geography tables. |
+| **1. Landscape Overview** | Five headline metrics, salary by experience level with typical ranges, top-10 job titles (median *and* average salary), side-by-side company size and industry composition charts, and geography tables. |
 | **2. Skills Landscape** | Exactly two charts: skill frequency, and a skill × salary/growth scatter with quadrant lines and a minimum-posting threshold. |
 | **3. Demand & Trends** | Your filtered view, the always-unfiltered full 2026 landscape for comparison, and the one chart that spans 2025–2026. |
 | **4. Your Resume Fit** | An aggregate benchmark for your target role, AI-assisted resume extraction, an editable confirmation step, and a deterministic fit score with a full skill breakdown. |
@@ -245,8 +245,9 @@ per posting before any counting.
 ## Smoke test
 
 1. **Load with "All categories."** All tabs render. Tab 1 shows five metric cards, the
-   salary-by-experience-level table with typical ranges, three side-by-side horizontal bar
-   charts, and a top-10 title table whose median column reconciles with the median metric card.
+   salary-by-experience-level table with typical ranges, two side-by-side horizontal bar
+   charts (company size, industry), and a top-10 title table whose median column reconciles
+   with the median metric card.
 2. **Select "AI Engineering."** Tabs 1–3 update; Tab 3 Section B still shows the full
    unfiltered 2026 landscape.
 3. **Tab 2.** Exactly two charts, with both the threshold caption and the skill-growth-proxy
