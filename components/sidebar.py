@@ -135,6 +135,22 @@ def counts_for_title(counts: dict[tuple[str, str], int], title: str) -> int:
     return sum(n for (t, _), n in counts.items() if t == title)
 
 
+DATASET_CITATION_URL = (
+    "https://www.kaggle.com/datasets/alitaqishah/ai-jobs-market-2025-2026-salaries/data"
+)
+
+
+def _render_dataset_citation() -> None:
+    """Render the source citation for the bundled dataset."""
+    st.divider()
+    st.subheader("Data source")
+    st.caption(
+        f"Bundled data: **AI Jobs Market 2025–2026 Salaries**, via Kaggle "
+        f"([dataset page]({DATASET_CITATION_URL})). Provided as-is; not verified "
+        f"against real job postings."
+    )
+
+
 def render_sidebar() -> dict[str, Any]:
     """Render both sidebar sections and return the combined selections."""
     with st.sidebar:
@@ -142,4 +158,5 @@ def render_sidebar() -> dict[str, Any]:
         landscape = _render_landscape_section()
         st.divider()
         resume = _render_resume_section(landscape["dataset"])
+        _render_dataset_citation()
     return {**landscape, **resume}

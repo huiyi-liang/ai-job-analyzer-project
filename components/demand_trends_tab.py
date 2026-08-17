@@ -141,20 +141,21 @@ def _section_c(df_full: pd.DataFrame, category: str) -> None:
         secondary_y=True,
     )
     figure.update_layout(
-        title=dict(text=f"Postings and median salary by month, 2025–2026 (category: {category})",
-                   font=dict(size=14)),
+        title=dict(
+            text=f"Postings and median salary by month, 2025–2026 (category: {category})",
+            font=dict(size=14),
+            y=0.98,
+            yanchor="top",
+        ),
         showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
+        legend=dict(orientation="h", yanchor="bottom", y=1.10, x=0),
         hovermode="x unified",
+        margin=dict(t=90),
     )
     style_figure(figure, height=TREND_CHART_HEIGHT)
-    figure.update_layout(showlegend=True)
-    figure.update_yaxes(
-        title_text="Postings (left axis, solid)", secondary_y=False, showgrid=False
-    )
-    figure.update_yaxes(
-        title_text="Median salary USD (right axis, dashed)", secondary_y=True, showgrid=False
-    )
+    figure.update_layout(showlegend=True, margin=dict(t=90))
+    figure.update_yaxes(title_text="Postings", secondary_y=False, showgrid=False)
+    figure.update_yaxes(title_text="Median salary (USD)", secondary_y=True, showgrid=False)
     figure.update_xaxes(showgrid=False)
     st.plotly_chart(figure, width="stretch")
     st.caption(
