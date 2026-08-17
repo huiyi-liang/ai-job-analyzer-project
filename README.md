@@ -8,6 +8,8 @@ metric, chart, and table shows the posting count behind it, rare skills are excl
 salary charts rather than presented as insight, and the resume score is deterministic Python
 that a language model never touches.
 
+**Live app:** [AI-job-landscape-fit-analyzer.streamlit.app](https://huiyi-liang-ai-job-analyzer-project-app-4xaklh.streamlit.app/)
+
 ---
 
 ## Features
